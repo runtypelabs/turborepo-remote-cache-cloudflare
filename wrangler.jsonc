@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "turborepo-remote-cache",
+  "name": "runtype-turbo-cache",
   "main": "src/index.ts",
   "compatibility_date": "2026-01-19",
   "upload_source_maps": true,
@@ -11,7 +11,7 @@
     "ENVIRONMENT": "production",
     // - TURBO_TOKEN (must a valid Bearer auth token)
     // Run `echo <VALUE> | wrangler secret put <NAME>` for each of these
-    "BUCKET_OBJECT_EXPIRATION_HOURS": 720,
+    "BUCKET_OBJECT_EXPIRATION_HOURS": 168,
   },
   "r2_buckets": [
     {
