@@ -1,6 +1,6 @@
-import { createExecutionContext, reset } from 'cloudflare:test';
+import { createExecutionContext, reset, waitOnExecutionContext } from 'cloudflare:test';
 import { env } from 'cloudflare:workers';
-import { describe, beforeEach, expect, test } from 'vitest';
+import { describe, beforeEach, afterEach, expect, test } from 'vitest';
 import { Env, workerHandler } from '~/index';
 import { DEFAULT_TEAM_ID } from '~/routes/v8/artifacts';
 import { StorageManager } from '~/storage';
@@ -16,6 +16,10 @@ describe('v8 Artifacts API', () => {
 
   beforeEach(async () => {
     await reset();
+  });
+
+  afterEach(async () => {
+    await waitOnExecutionContext(ctx);
   });
 
   describe('GET artifact endpoint', () => {
